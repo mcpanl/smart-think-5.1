@@ -1,0 +1,19 @@
+{
+    "name": "mcpanl/smart-think-5.1",
+    "description": "SmartThink for thinkphp5.1",
+    "autoload": {
+        "psr-4": {
+            "Mcpanl\\SmartThink51\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "mapenghui",
+            "email": "3072609949@qq.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "topthink/think": "^5.1"
+    }
+}
