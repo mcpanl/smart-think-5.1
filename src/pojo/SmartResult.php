@@ -9,7 +9,9 @@ class SmartResult
     // 数据
     protected $data;
 
-    // 错误信息
+    /**
+     * @var \Exception
+     */
     protected $error;
 
     /**
@@ -33,6 +35,26 @@ class SmartResult
      */
     public function setError(SmartError $smartError) {
         $this->error = $smartError;
+    }
+
+
+    /**
+     * 获取Http响应格式数据
+     */
+    public function getHttpResponse() {
+        if(is_null($this->error)) {
+            return [
+                'code' => 0,
+                'msg' => '操作成功',
+                'data' => $this->data
+            ];
+        }else{
+            return [
+                'code' => 500,
+                'msg' => '服务器命令执行异常，请稍后重试！',
+                'data' => $this->error->getMessage()
+            ];
+        }
     }
 
     /**
