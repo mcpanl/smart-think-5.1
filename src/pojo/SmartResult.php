@@ -10,7 +10,7 @@ class SmartResult
     protected $data;
 
     /**
-     * @var \Exception
+     * @var SmartError
      */
     protected $error;
 
@@ -52,7 +52,7 @@ class SmartResult
             return [
                 'code' => 500,
                 'msg' => '服务器命令执行异常，请稍后重试！',
-                'data' => $this->error->getMessage()
+                'data' => $this->error->getStackTrace()->getMessage()
             ];
         }
     }
