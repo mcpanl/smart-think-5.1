@@ -34,6 +34,8 @@ trait FinalAction
         } catch (\Exception $e) {
             $smartError = new SmartError();
 
+            $smartError->setStackTrace($e);
+
             $smartResult->setError($smartError);
         }
 
