@@ -24,7 +24,10 @@ trait FinalAction
                 $data = $this->paginate();
             }else{
                 // 未开启分页
-                $data = $this->selectOrFail();
+                $data = $this
+                    ->where($this->modelQueryOption->get('think_where', []))
+                    ->order($this->modelQueryOption->get('think_order', []))
+                    ->select();
             }
 
             $smartResult->setData($data);
@@ -45,11 +48,9 @@ trait FinalAction
 
         // think_where
         $this->makeThinkWhere();
-        $this->where($this->modelQueryOption->get('think_where', []));
 
         // think_order
         $this->makeThinkOrder();
-        $this->order($this->modelQueryOption->get('think_order', []));
 
 
     }
