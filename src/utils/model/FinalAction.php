@@ -9,11 +9,15 @@ use Mcpanl\SmartThink51\pojo\SmartResult;
 
 trait FinalAction
 {
+
     public function getResult() {
         $smartResult = new SmartResult();
 
 
         try {
+
+            $this->makeThink();
+
             // pagination
             if($this->modelQueryOption->get('pagination', false)) {
                 // 开启分页
